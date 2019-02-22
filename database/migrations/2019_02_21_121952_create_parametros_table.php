@@ -15,11 +15,9 @@ class CreateParametrosTable extends Migration
     {
         Schema::create('parametros', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_actividad')->unsigned();
+            $table->foreign('id_actividad')->references('id')->on('actividad');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('rol');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

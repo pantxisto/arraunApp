@@ -16,10 +16,7 @@ class CreateDocumentosTable extends Migration
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('rol');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('mime');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -15,11 +15,11 @@ class CreateTraineraAlineacionTable extends Migration
     {
         Schema::create('trainera_alineacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('rol');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->integer('id_trainera')->unsigned();
+            $table->foreign('id_trainera')->references('id')->on('trainera');
+            $table->timestamp('fecha');
+            $table->integer('id_alineacion')->unsigned();
+            $table->foreign('id_alineacion')->references('id')->on('alineacion');
             $table->rememberToken();
             $table->timestamps();
         });

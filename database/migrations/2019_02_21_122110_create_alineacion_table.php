@@ -15,11 +15,19 @@ class CreateAlineacionTable extends Migration
     {
         Schema::create('alineacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('rol');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('name1');
+            $table->string('name2');
+            $table->string('name3');
+            $table->string('name4');
+            $table->string('name5');
+            $table->string('name6');
+            $table->string('name7');
+            $table->string('name8');
+            $table->string('name9');
+            $table->string('name10');
+            $table->string('name11');
+            $table->string('name12');
+            $table->string('name13');
             $table->rememberToken();
             $table->timestamps();
         });

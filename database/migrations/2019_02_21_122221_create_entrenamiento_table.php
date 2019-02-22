@@ -15,13 +15,18 @@ class CreateEntrenamientoTable extends Migration
     {
         Schema::create('entrenamiento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('rol');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->integer('id_usuario')->unsigned();
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->timestamp('fecha');
+            $table->integer('id_actividad')->unsigned();
+            $table->foreign('id_actividad')->references('id')->on('actividad');
+            $table->integer('id_parametro')->unsigned();
+            $table->foreign('id_parametro')->references('id')->on('parametros');
+            $table->integer('id_unidad')->unsigned();
+            $table->string('valor_parametro');
+            $table->foreign('id_unidad')->references('id')->on('unidades');
+
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 
