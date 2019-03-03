@@ -9,12 +9,7 @@ class ParametrosTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        DB::table('parametros')->insert([
-            'id_actividad' => 0,
-            'name'  => 'Velocidad',
-        ]);
+    public function run() {
  
     }
 }
