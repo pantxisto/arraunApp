@@ -7,8 +7,4 @@ use Illuminate\Http\Request;
 class mesociclosController extends Controller
 {
     //
-    public function Mesociclos()
-    {
-        return view('mesociclos');
-    }
 }

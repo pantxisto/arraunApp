@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -9,18 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//---------------------------------DOCUMENTOS-----------------------------------
-Route::get('/documentos', "documentosController@Documentos")->name('documentos');
 
 
-//---------------------------MENÚ DOCUMENTOS------------------------------------
-Route::get('/mesociclos', "mesociclosController@Mesociclos")->name('mesociclos');
-Route::get('/entrenamientos', "entrenamientosController@Entrenamientos")->name('entrenamientos');
-Route::get('/datospersonales', "datosPersonalesController@DatosPersonales")->name('datosPersonales');
-Route::get('/alineacion', "alineacionController@Alineacion")->name('alineacion');
+//-----------------DOCUMENTOS
+Route::get('/documentos', 'documentosController@documentos')->name('documentos');
+Route::get('/documentosFecha', 'documentosController@documentosFecha')->name('documentos');
+Route::get('/mesociclos', 'mesociclosController@index')->name('mesociclos');
+Route::get('/entrenamientos', 'entrenamientosController@index')->name('entrenamientos');
+Route::get('/alineacion', 'alineacionController@index')->name('alineacion');
+Route::get('/datosPersonales', 'datosPersonalesController@index')->name('datosPersonales');

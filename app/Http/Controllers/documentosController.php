@@ -1,60 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Documentos;
 use Illuminate\Http\Request;
 
 class documentosController extends Controller
 {
-/*----------------------------------------------------------MOSTRAR VISTA DOCUMENTOS--------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------*/
-    public function Documentos()
-    {
-        return view('documentos');
+    //
+    public function documentos(){
+        $documentos = Documentos::select('name','mime')->get();
+        return view("documentos")->with('documentos', $documentos);
     }
 
-
-/*----------------------------------------------------------SELECCIONAR TODOS LOS DOCUMENTOS------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------*/
-    public function seleccionarDocumentos()
-    {
-        $nombreDocumento = Documentos::select('name');
-        return view('documentos')->with('documentos',$nombreDocumento);
+    public function documentosFecha(){
+        $documentosFecha = Documentos::select('name','mime')-> where('created_at', 'LIKE', '2019-04-27 00:00:00')->get();
+        return view("documentos")->with('documentos', $documentosFecha);
     }
-
-    public function seleccionarMime()
-    {
-        $mimeDocumento = Documentos::select('mime')->where(name,'LIKE', $nombreDocumento)->get();
-        return view('documentos')->with('documentos',$nombreDocumento);
-    }
-
-/*----------------------------------------------------------SELECCIONAR DOCUMENTOS FECHA CONCRETA-------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------*/
-    public function documentosFechaConcreta()
-    {
-        $nombreDocumento = Documentos::select('name')->where(create_at,'<=', $fechaConcreta)->get();;
-        return view('documentos')->with('documentos',$nombreDocumento);
-    }
-
-    public function mimeFechaConcreta()
-    {
-        $mimeDocumento = Documentos::select('mime')->where(name,'LIKE', $nombreDocumento)->where(create_at,'<=', $fechaConcreta)->get();
-        return view('documentos')->with('mimeDocumentos',$mimeDocumento);
-    }
-
-/*----------------------------------------------------------SELECCIONAR DOCUMENTOS RANGOS DE FECHA-------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------*/
-    public function documentosRangoFechas()
-    {
-        $nombreDocumento = Documentos::select('name')->where(create_at,'<=', $fechaInicio)->where(create_at,'>=', $fechaFin)->get();;
-        return view('documentos')->with('documentos',$nombreDocumento);
-    }
-
-    public function mimeRangoFechas()
-    {
-        $mimeDocumento = Documentos::select('mime')->where(name,'LIKE', $nombreDocumento)->where(create_at,'<=', $fechaConcreta)->where(create_at,'>=', $fechaFin)->get();
-        return view('documentos')->with('mimeDocumentos',$mimeDocumento);
-    }
-
-
 }
+
